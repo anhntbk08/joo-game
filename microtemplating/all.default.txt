@@ -1,0 +1,572 @@
+﻿<!-- indicate the effective area, required by Joo Framework -->
+<div id="effective-area">
+	<div id="container">
+		<div id="header_outer">
+		</div>
+		<div id="wrapper">
+			<div id="left"></div>
+			<div id="main"></div>
+			<div id="right"></div>
+		</div><!-- wrapper -->
+		<div id="footer"></div>
+	</div><!-- container -->
+</div><!-- effective-area -->
+<div id="Portlets-Layout">
+	<script type="text/html" id="portlets-Layout">
+		{
+			portlets:
+			[
+			{portlet: 'CerberusHeaderPortlet', position: 'header_outer'}
+			],
+			plugins:
+			[
+			{plugin: 'AnimationCapabilityPlugin', delay: false},
+			{plugin: 'PopupPlugin', delay: false},
+			{plugin: 'MotionMovePlugin', delay: false},
+			{plugin: 'PopupPlugin', delay: false}
+			]
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Build">
+		{
+			portlets:
+			[
+			{ portlet: 'BuildPortlet', position: 'main' }
+			],
+			plugins:
+			[
+			],
+			parent: 'Layout'
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Home">
+		{
+			portlets:
+			[
+			{ portlet: 'ToolkitPortlet', position: 'main' }
+			],
+			plugins:
+			[
+			],
+			parent: 'Layout'
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Preview">
+		{
+			portlets:
+			[
+			{ portlet: 'PreviewPortlet', position: 'main' }
+			],
+			plugins:
+			[
+			{plugin: 'TouchCompatibilityPlugin', delay: false}
+			],
+			parent: 'Layout'
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Web">
+		{
+			portlets:
+			[
+			{ portlet: 'HeaderPortlet', position: 'header' },
+			{ portlet: 'SearchPortlet', position: 'header' },
+			{ portlet: 'FooterPortlet', position: 'footer' },
+			],
+			plugins:
+			[
+			],
+			parent: 'Layout'
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Animation">
+		{
+			portlets:
+			[
+			{ portlet: 'AnimationPortlet', position: 'main' }
+			],
+			plugins:
+			[
+			],
+			parent: 'Web'
+		}
+	</script>
+	
+	<script type="text/html" id="portlets-Animations">
+		{
+			portlets:
+			[
+			{ portlet: 'AllAnimationsPortlet', position: 'main' }
+			],
+			plugins:
+			[
+			],
+			parent: 'Web'
+		}
+	</script>
+</div>
+<!-- plugin template -->
+<div class="plugin-data">
+	<!-- all plugin templates go here -->
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="PreviewPortletView">
+		<div id="PreviewPortlet-Main"></div>
+	</script>
+	
+	<script type="text/html" id="ToolkitPortletView">
+		<div id="ToolkitPortlet-Main"></div>
+	</script>
+	
+	<script type="text/html" id="BuildStageView">
+		<joo:composition>
+			
+		</joo:composition>
+	</script>
+	
+	<script type="text/html" id="DrawingStageView">
+		<joo:composition>
+			<joo:DrawingMenuBar varName="menuBar" />
+			<joo:JOOTextInput varName="searchObjectInput" placeholder="type object name to search" custom="{ 'left': '375px', 'top': '-24px','z-index': '99999'}"/>
+			<joo:Sketch varName="drawingAreaContainer" custom="{'padding-top': '0px', 'width': '100%'}">
+				<joo:Sketch y="30" width="1024" height="768" custom="{'overflow': 'visible', 'margin': 'auto'}">
+					<joo:DrawingBubble varName="bubble" x="50" y="600" />
+					<joo:DrawingArea varName="drawingArea" custom="{'overflow': 'visible'}">
+						<joo:DrawingGroupWrapper varName="groupWrapper" />
+					</joo:DrawingArea>
+				</joo:Sketch>
+			</joo:Sketch>
+			<joo:DrawingGroupEditDialog varName="editGroupDlg" width="300" x="300" y="200" custom="{'display': 'none'}" />
+			<joo:BubbleDialog varName="bubbleDlg" x="0" y="245" />
+			<joo:DrawingToolbox varName="toolbox" x="0" y="105" />
+			<joo:DrawingDownloadDialog varName="downloadDlg" x="15" y="105" />
+			<joo:DrawingNewDialog varName="newDlg" />
+			<joo:DrawingGroupDialog y="30" varName="groupDlg" />
+			
+			<!-- for test compatible with old version data -->
+			<! -- <joo:DrawingLibrary varName="libraryDlg" x="16" y="246"/> -->
+			<!-- end-->
+			
+			<joo:DrawingPagesList varName="pagesList" x="15" y="105" />
+			<joo:DrawingShareDialog varName="shareDlg" />
+			<joo:JOOImage varName="loadingDlg" src="static/images/progress_bar.gif" custom="{'position': 'absolute', 'z-index': '1000'}" />
+			<joo:DrawingPropertiesDialog varName="properties" absolute="true" custom="{ 'width' : '275px'}"/>
+			<joo:DrawingScriptDialog varName="scripts" absolute="true" height="400" width="600" />
+			<joo:DrawingSizeChooserDialog varName="sizeChooser" absolute="true" />
+			<joo:DownloadElement varName="download" />
+		</joo:composition>
+	</script>
+	
+	<script type="text/html" id="DrawingControlView">
+		<joo:composition title="Keyframe settings">
+			<joo:Var name="contentPane" layout="vertical">
+				<joo:Sketch varName="controlHeader" extclasses="timeline-header">
+					<joo:Sketch varName="controlHeaderLeft" extclasses="timeline-header-left">
+						<joo:JOOToggleButton varName="showHideAllLayer" width="16" height="16" state="true" extclasses="lock-layer-btn" />
+						<joo:JOOToggleButton varName="lockAllLayer" width="16" height="16" state="true" extclasses="show-layer-btn" />
+						<joo:Sketch varName="addNewLayer" width="16" height="16" extclasses="new-layer-btn" />
+					</joo:Sketch>
+					<joo:JOORuler varName="ruler" width="1090" height="30" initMax="135" initMin="0" max="1000" interval="8" groupmode="quarter" />
+				</joo:Sketch>
+				<joo:Sketch varName="controls" extclasses="drawing-controls-set,layer-container" custom="{'overflow-y': 'scroll'}">
+					<joo:DrawingLayerPane varName="layerPane" />
+				</joo:Sketch>
+			</joo:Var>
+		</joo:composition>
+	</script>
+	
+	<script type="text/html" id="DrawingDownloadDialogView">
+		<joo:composition title="Download Options">
+			<joo:Var name="contentPane" height="130">
+				<joo:Panel width="184" layout="vertical" custom="{'border': '1px solid #AAA', 'margin': '5px'}">
+					<joo:JOOLabel lbl="File name" />
+					<joo:JOOTextInput varName="fileNameInput" value="Untitled1" />
+					<joo:Sketch layout="flow">
+						<joo:Sketch layout="flow" width="50">
+							<joo:JOOLabel lbl="Loop" />
+						</joo:Sketch>
+						<joo:JOOCheckbox varName="loopInput" />
+					</joo:Sketch>
+					<joo:Sketch layout="flow">
+						<joo:Sketch width="50">
+							<joo:JOOLabel lbl="FPS" />
+						</joo:Sketch>
+						<joo:JOOTextInput varName="framerateInput" value="15" width="50" />
+					</joo:Sketch>
+					<joo:Sketch layout="flow">
+						<joo:Sketch width="50">
+							<joo:JOOLabel lbl="Format" />
+						</joo:Sketch>
+						<joo:JOOInputSelect varName="formatInput">
+							<joo:JOOSelectOption label="Cat Data (ZIP)" value="cat" />
+							<joo:JOOSelectOption label="Compressed HTML (ZIP)" value="zip-html" />
+							<joo:JOOSelectOption label="Android Package (APK)" value="apk" />
+							<joo:JOOSelectOption label="JOO Magazine (JMG)" value="joo-book" />
+						</joo:JOOInputSelect>
+					</joo:Sketch>
+				</joo:Pane>
+				
+				<joo:Sketch layout="flow" custom="{'text-align': 'right'}">
+					<joo:JOOButton varName="saveBtn" lbl="Download" />
+				</joo:Sketch>
+			</joo:Var>
+		</joo:composition>
+	</script>
+
+	<script type="text/html" id="DrawingSaveDialogView">
+		<joo:composition title="Save As">
+			<joo:Var name="contentPane" layout="vertical" height="230" width="270" custom="{'padding':'0px'}">
+				<joo:Panel width="100%" custom="{'text-align':'left'}">
+					<joo:Panel>
+						<joo:JOOLabel lbl="Save As:" custom="{'width':'50px','float':'left','margin-left':'20px'}" />
+						<joo:JOOTextInput varName="fileNameInput" custom="{'width':'150px','float':'left','margin-left':'15px'}" />
+					</joo:Panel>
+					<joo:Panel>
+						<joo:JOOLabel lbl="Tags:" custom="{'width':'50px','float':'left','margin':'5px 0px 0px 20px'}" />
+						<joo:JOOTextInput varName="tagInput" custom="{'float':'left','width':'150px','margin-left':'15px'}"  />
+					</joo:Panel>
+					<joo:Sketch varName="tagContainer" custom="{'float':'left','width':'160px','height':'70px','margin-left':'85px','background-color':'#dedede'}"></joo:Sketch>
+				</joo:Panel>
+				<joo:Panel width="100%" custom="{'text-align':'right','padding':'5px 0px 5px 0px', 'margin':'10px 0px 0px 0px', 'border-top':'1px #888 solid', 'background-color':'#ccc'}">
+					<joo:JOOButton varName="saveBtn" lbl="Save" />
+					<joo:JOOButton varName="closeBtn" lbl="Cancel" custom="{'margin-right':'10px'}" />
+				</joo:Panel>
+			</joo:Var>
+		</joo:composition>
+	</script>
+
+	<script type="text/html" id="DrawingMediaTagView">
+		<joo:composition title="Media tag">
+			<joo:Var name="contentPane" height="320" custom="{'background':'#dedede','padding':'0px'}">
+				<joo:Panel width="500" custom="{'padding-bottom':'15px'}">
+					<joo:Sketch custom="{'width':'48%','padding-top':'10px','display':'inline-block'}">
+						<joo:JOOLabel lbl="Resize to: " custom="{'margin-left':'5px'}" />
+						<joo:JOOTextInput varName="tagInput" value="<%=localStorage.getItem('cat.resize.default')%>" />
+						<joo:Sketch varName="tagContainer" custom="{ 'margin-left':'5px','width':'90%', 'height':'auto' }">
+						</joo:Sketch>
+					</joo:Sketch>
+					<joo:Sketch custom="{'width':'48%','text-align':'center','height':'auto','vertical-align':'middle', 'display':'inline-block' }">
+						<joo:JOOImage varName="previewImg" src="static/images/default.png" custom="{'max-width':'250px','max-height':'250px', 'margin-top':'10px'}" />
+					</joo:Sketch>
+				</joo:Panel>
+				<joo:Sketch layout="flow" custom="{'text-align':'right','padding':'5px', 'height':'auto', 'background-color':'#e0e0e0'}">
+					<joo:JOOButton varName="btnOK" lbl="OK" />
+					<joo:JOOButton varName="btnCancel" lbl="Cancel" />
+				</joo:Sketch>
+			</joo:Var>
+		</joo:composition>
+	</script>
+
+	<script type="text/html" id="DrawingAudioBrowserView">
+		<joo:composition title="Sound chooser">
+			<joo:Var name="contentPane">
+				<joo:Sketch custom="{'padding':'5px'}">
+					<joo:JOOButton varName="btnPrev" lbl="Prev" height="20" custom="{'line-height':'20px','-webkit-border-radius':'5px 0px 0px 5px'}" extclasses="inactive" />
+					<joo:JOOButton varName="btnNext" lbl="Next" height="20" custom="{'line-height':'20px','-webkit-border-radius':'0px 5px 5px 0px'}" />
+					<joo:JOOTextInput handler:change="this.searchInputChange(arguments[0])" varName="searchInput" custom="{'float':'right'}" />
+				</joo:Panel>
+				<joo:Sketch custom="{'margin-top':'2px'}">
+					<joo:Sketch custom="{'background-color':'#dedede','padding':'2px'}">
+						<joo:Panel custom="{'width':'300px'}" ><joo:JOOLabel lbl="Label" /></joo:Panel>
+						<joo:Panel custom="{'width':'100px'}" ><joo:JOOLabel lbl="Length" /></joo:Panel>
+						<joo:Panel custom="{'width':'150px'}" ><joo:JOOLabel lbl="Since" /></joo:Panel>
+					</joo:Sketch>
+					<joo:Sketch varName="audioList" custom="{'height':'250px','overflow-y':'scroll'}">
+					</joo:Sketch>
+				</joo:Sketch>
+				<joo:Sketch varName="buttonContainer" layout="flow" custom="{'text-align':'right','padding':'5px'}">
+					<joo:JOOButton varName="btnUpload" lbl="Upload" extclasses="muggle" />
+					<joo:JOOButton varName="btnNoSound" lbl="No Sound" extclasses="muggle"
+						handler:click="this.useNoSound()" />
+					<joo:JOOButton varName="btnChoose" lbl="Choose" />
+				</joo:Sketch>
+			</joo:Var>
+		</joo:composition>
+	</script>
+	
+	<script type="text/html" id="DrawingAudioListItemView" >
+		<joo:composition>
+			<joo:Panel custom="{'width':'300px'}" ><joo:JOOLabel lbl="<%=label%>" /></joo:Panel>
+			<joo:Panel custom="{'width':'100px'}" ><joo:JOOLabel varName="audioDuration" lbl="<%=length%>" /></joo:Panel>
+			<joo:Panel custom="{'width':'150px'}" ><joo:JOOLabel lbl="<%=since%>" /></joo:Panel>
+		</joo:composition>
+	</script>
+	
+	<script type="text/html" id="DrawingNewDialogView">
+		<joo:composition title="Template chooser">
+			<joo:Var name="contentPane" height="380">
+				<joo:Panel width="760" height="350" layout="flow" custom="{'text-align':'center','background-color':'#000'}">
+					<joo:Sketch width="700" layout="flow" custom="{'text-align':'left'}">
+						<joo:Sketch layout="vertical" custom="{'text-align':'center','padding':'20px'}">
+							<joo:JOOImage varName="imgBasic" src="static/images/booktemplates/basic.jpg" custom="{'cursor':'pointer','-webkit-box-reflect': 'below -1.098901098901095px -webkit-gradient(linear, 0% 0%, 0% 89.01098901098901%, from(transparent), color-stop(0.714302, transparent), to(rgba(255, 255, 255, 0.496094)))'}" />
+							<joo:JOOLabel custom="{'color':'#fff'}" lbl="Basic" />
+						</joo:Sketch>
+						<joo:Sketch layout="vertical" custom="{'text-align':'center','padding':'20px'}">
+							<joo:JOOImage varName="imgFairyTales" src="static/images/booktemplates/fairytales.jpg" custom="{'cursor':'pointer','-webkit-box-reflect': 'below -1.098901098901095px -webkit-gradient(linear, 0% 0%, 0% 89.01098901098901%, from(transparent), color-stop(0.714302, transparent), to(rgba(255, 255, 255, 0.496094)))'}" />
+							<joo:JOOLabel custom="{'color':'#fff'}" lbl="Fairy tales" />
+						</joo:Sketch>
+						<joo:Sketch layout="vertical" custom="{'text-align':'center','padding':'20px'}">
+							<joo:JOOImage varName="imgKidBook" src="static/images/booktemplates/educational.jpg" custom="{'cursor':'pointer','-webkit-box-reflect': 'below -1.098901098901095px -webkit-gradient(linear, 0% 0%, 0% 89.01098901098901%, from(transparent), color-stop(0.714302, transparent), to(rgba(255, 255, 255, 0.496094)))'}" />
+							<joo:JOOLabel custom="{'color':'#fff'}" lbl="Kid book" />
+						</joo:Sketch>
+						<joo:Sketch layout="vertical" custom="{'text-align':'center','padding':'20px'}">
+							<joo:JOOImage varName="imgComics" src="static/images/booktemplates/comics.jpg" custom="{'cursor':'pointer','-webkit-box-reflect': 'below -1.098901098901095px -webkit-gradient(linear, 0% 0%, 0% 89.01098901098901%, from(transparent), color-stop(0.714302, transparent), to(rgba(255, 255, 255, 0.496094)))'}" />
+							<joo:JOOLabel custom="{'color':'#fff'}" lbl="Comics" />
+						</joo:Sketch>
+						<joo:Sketch layout="vertical" custom="{'text-align':'center','padding':'20px'}">
+							<joo:JOOImage varName="imgCookBook" src="static/images/booktemplates/cookbook.jpg" custom="{'cursor':'pointer','-webkit-box-reflect': 'below -1.098901098901095px -webkit-gradient(linear, 0% 0%, 0% 89.01098901098901%, from(transparent), color-stop(0.714302, transparent), to(rgba(255, 255, 255, 0.496094)))'}" />
+							<joo:JOOLabel custom="{'color':'#fff'}" lbl="Cook book" />
+						</joo:Sketch>
+					</joo:Sketch>
+				</joo:Panel>
+				<joo:Sketch layout="flow" custom="{'padding':'5px 10px 5px 10px', 'background-color':'#DDD'}">
+					<joo:Sketch layout="flow">
+						<joo:JOOButton varName="btnOpen" lbl="Open" />
+					</joo:Sketch>
+					<joo:Sketch layout="flow" custom="{'float':'right'}">
+						<joo:JOOButton varName="btnCancel" lbl="Cancel" />
+					</joo:Sketch>
+				</joo:Sketch>
+			</joo:Var>
+		</joo:composition>
+	</script>
+
+        <!-- anhnt diaglog for edit animation -->
+		<script type="text/html" id="DrawingAnimationDialogView" >
+		   <joo:composition >
+			    <joo:var name="contentPane" >
+				<!-- trigger event -->
+				
+					<joo:Sketch>
+						<joo:JOOLabel lbl="Group" custom="{'margin-right': '22px'}" />
+						<joo:JOOInputSelect varName="listGroup" custom="{'left': 'auto','width': '51%','right': '-32px'}" />
+					</joo:Sketch>
+					
+					<joo:Sketch custom = "{'box-sizing': 'border-box', 'margin-top': '8px', 'height' : '18px', 'color' : '#444', 'padding' : '0 5px', 'line-height' : '18px', 'margin-bottom' : '14px','background-image' : '-webkit-gradient(linear, left top, left bottom, color-stop(0.00, lightGrey), color-stop(1.0, gray))','background-color': '#DDD'}">
+						<joo:JOOLabel lbl="Event" />
+					</joo:Sketch>
+				
+					<joo:Sketch layout="flow" >
+						<joo:JOOInputSelect varName ="eventType" width="310">
+							<joo:JOOSelectOption value="init" label="At the beginning (Entrance)"></joo:JOOSelectOption>
+							<joo:JOOSelectOption value="event_chain" label="When another object start/end its animation (Event chain)"></joo:JOOSelectOption>
+							<joo:JOOSelectOption value="touch" label="When user touch this object (Touch Start)"></joo:JOOSelectOption>
+						</joo:JOOInputSelect>
+						<joo:JOOTextInput varName="touchNumber" value = "1" custom= "{'display': 'none', 'width': '25px' }" placeholder = "number"/>
+						<joo:Sketch custom="{'display': 'block'}">
+							<joo:Sketch layout="flow" custom= "{ 'display': 'none', 'padding': '10px 0' }" varName="chainProperties">
+								<joo:JOOInputSelect varName="objectList" custom="{'width': '120px'}">
+									<joo:JOOSelectOption value="touch" label="object 1" />
+									<joo:JOOSelectOption value="touch" label="object 2" />
+									<joo:JOOSelectOption value="touch" label="object 3" />
+								</joo:JOOInputSelect>
+								
+								<joo:JOOInputSelect varName="typeTrigger" custom="{'width': '70px'}">
+									<joo:JOOSelectOption value="start_animation" label="Start" />
+									<joo:JOOSelectOption value="end_animation" label="End" />
+								</joo:JOOInputSelect>
+								
+								<joo:JOOInputSelect varName="listAnimation" custom="{'width': '120px'}">
+									<joo:JOOSelectOption value="touch" label="treeshake" />
+									<joo:JOOSelectOption value="touch" label="simple jump" />
+									<joo:JOOSelectOption value="touch" label="complex jump" />
+								</joo:JOOInputSelect>
+						   	</joo:Sketch>
+					   	</joo:Sketch>
+					   
+					   	<joo:Sketch custom="{'padding' : '5px 0', 'display': 'block'}">
+							<joo:Sketch layout="flow">
+								<joo:JOOLabel y=4 lbl="Run after&nbsp;" />
+							   	<joo:JOOTextInput varName="delayTime" custom= "{'width': '50px'}" placeholder = "delay time"/>
+							   	<joo:JOOLabel y=4 lbl="&nbsp;ms" />
+							   	
+								<joo:JOOLabel y=4 lbl=", repeat every&nbsp;" />
+						   		<joo:JOOTextInput varName="intervalTime" custom= "{'width': '50px'}" placeholder = "interval time" />
+						   		<joo:JOOLabel y=4 lbl="&nbsp;ms" />
+						   		
+						   		<joo:Sketch varName ="wrapperAutoPlay" layout="flow">
+							   		<joo:JOOLabel y=4 lbl="Autoplay the effect after&nbsp;" />
+									<joo:JOOTextInput varName="autoplayTime" custom= "{'width': '50px'}" placeholder = "autoplay time" />
+									<joo:JOOLabel y=4 lbl="&nbsp;ms" />
+									<joo:Sketch>
+										<joo:JOOLabel lbl="Use Item click" custom="{'left': '44px', 'top': '4px'}"/>
+										<joo:JOOCheckBox varName="cbItemClick" custom= "{'left' : '56px',  'position': 'relative','right': '37px' }" />
+									</joo:Sketch>
+																	
+									<joo:Sketch varName="wrapperItemClickPro" custom="{'left': '119px','display':'none'}">		
+											<joo:Sketch custom="{'top': '5px', 'display' : 'inline-block'}">
+												<joo:JOOLabel lbl="Parent " custom="{ 'top': '4px'}"/>
+												<joo:JOOInputSelect varName="itemClickParentList" custom="{'top': '1px'}">
+												</joo:JOOInputSelect>
+											</joo:Sketch>
+											<joo:Sketch custom="{'top': '5px', 'display' : 'inline-block'}">
+												<joo:JOOLabel lbl="Parent event" custom="{'top': '4px'}"/>
+												<joo:JOOInputSelect varName="itemClickParentEventList" custom="{'top': '1px'}">
+												</joo:JOOInputSelect>
+											</joo:Sketch>
+									</joo:Sketch>
+									<joo:Sketch custom="{'display' : 'none'}">
+										<joo:Sketch>
+											<joo:JOOLabel lbl="Item click X Position" custom="{'left': '44px', 'top': '4px'}"/>
+											<joo:JOOTextInput varName="itemClickX" custom= "{'left' : '56px', 'width': '32%', 'position': 'relative','right': '37px' }" />	
+										</joo:Sketch>
+										<joo:Sketch>
+											<joo:JOOLabel lbl="Item click Y Position" custom="{'left': '44px', 'top': '4px'}"/>
+											<joo:JOOTextInput varName="itemClickY" custom= "{'left' : '56px', 'width': '32%', 'position': 'relative','right': '37px' }" />	
+										</joo:Sketch>
+									</joo:Sketch>
+						   		</joo:Sketch>
+						   	</joo:Sketch>
+					   	</joo:Sketch>
+					</joo:Sketch>
+					
+					<joo:Sketch custom = "{'box-sizing': 'border-box', 'margin-top': '8px', 'height' : '18px', 'color' : '#444', 'padding' : '0 5px', 'line-height' : '18px', 'margin-bottom' : '14px','background-image' : '-webkit-gradient(linear, left top, left bottom, color-stop(0.00, lightGrey), color-stop(1.0, gray))','background-color': '#DDD'}">
+						<joo:JOOLabel lbl="Animation detail"> </joo:JOOLabel>
+					</joo:Sketch>
+					
+					
+				<!-- animation detail -->
+				
+					<joo:Sketch>
+						<joo:JOOLabel lbl="Effect Name " custom="{'margin-right': '22px'}" />
+						<joo:JOOTextInput value="" varName="effectName" placeholder="ex object1_action1"/>
+ 					</joo:Sketch>
+					
+					<joo:JOOLabel lbl="Effect" custom="{'margin-right': '57px'}" />
+					<joo:JOOInputSelect varName="animationSelect" custom="{'width': '65%'}" />
+					<joo:Sketch varName="wrapperProperties" layout="flow" >
+					
+					</joo:Sketch>
+					<joo:Sketch varName="wrapperSample" layout="flow" custom="{'height':'50px', }">
+						<joo:JOOImage varName="sampleImg" alt="touch it to show animation" src="static/images/animation_sample.png" custom="{'max-height':'70px', 'max-width': '70px'}"/>
+					</joo:Sketch>
+					
+					<!-- apply button -->
+					<joo:Sketch custom="{'padding': '0 0 20px', 'float': 'right'}">
+						<joo:JOOButton lbl="Apply" varName="applyAnimation" />
+						<joo:JOOButton varName="cancelBtn" lbl="Cancel " custom="{'color' : 'black' }"  />
+					</joo:Sketch>
+				</joo:var>	
+			</joo:composition>
+		</script>
+		
+		<script type="text/html" id="SubElementAnimationView" >
+			<joo:composition> 
+        		<joo:Sketch extClasses="wrapperSingleAnimation" layout="flow" custom = "{'line-height' : '19px' ,'margin-bottom' : '10px'}">
+            		<joo:JOOLabel lbl="object1_touch2" varName = "lbl"/>
+            		<joo:Sketch varName="delBtn" custom="{ 'width' : '24px', 'height' : '24px', 'background' : 'url(static/images/delete-trigger-animation.png) no-repeat' , 'margin-left' : '12px' }">	            			
+            		</joo:Sketch>
+            		<joo:Sketch varName="editBtn" custom="{ 'width' : '24px', 'height' : '24px', 'background' : 'url(static/images/edit-trigger-animation.png) no-repeat' , 'margin-left' : '12px' }">
+            		</joo:Sketch>
+            	</joo:Sketch>
+			</joo:composition>
+		</script>
+	
+        <script type="text/html" id="DrawingAnimationSelectView" >
+			<joo:composition>
+	            <joo:Sketch varName="wrapperAnimationList" layout="vertical" >
+	            	
+	            </joo:Sketch>
+            	
+            	<joo:JOOButton varName="addBtn" lbl="Add Effect" custom="{'float': 'right', 'height' : '23px', 'width' : '72px','min-width' : '0px', 'padding' : '0px' , 'color' : 'black' }"  />        
+            	
+			</joo:composition>
+		</script>
+		
+		<script type="text/html" id="DrawingLibraryView">
+			<joo:composition >
+					<joo:Sketch varName="preview">
+					</joo:Sketch>
+
+					<joo:var name="contentPane" >					
+						<joo:Sketch layout="flow"  >
+							<joo:JOOLabel lbl = "MovieClip 1" custom= "{'left': '11px','top': '9px'}"/>
+							<joo:JOOImage varName="previewImg" src="static/images/default.png" custom="{'max-width':'30px','max-height':'30px', 'margin-top':'10px','left': '61px','top': '-3px'}" />				
+						</joo:Sketch>
+						<joo:Sketch layout="flow"  >
+							<joo:JOOLabel lbl = "MovieClip 1" custom= "{'left': '11px','top': '9px'}"/>
+							<joo:JOOImage varName="previewImg" src="static/images/default.png" custom="{'max-width':'30px','max-height':'30px', 'margin-top':'10px','left': '61px','top': '-3px'}" />				
+						</joo:Sketch>
+						<joo:Sketch layout="flow"  >
+							<joo:JOOLabel lbl = "MovieClip 1" custom= "{'left': '11px','top': '9px'}"/>
+							<joo:JOOImage varName="previewImg" src="static/images/default.png" custom="{'max-width':'30px','max-height':'30px', 'margin-top':'10px','left': '61px','top': '-3px'}" />				
+						</joo:Sketch>
+						<joo:Sketch layout="flow"  >
+							<joo:JOOLabel lbl = "MovieClip 1" custom= "{'left': '11px','top': '9px'}"/>
+							<joo:JOOImage varName="previewImg" src="static/images/default.png" custom="{'max-width':'30px','max-height':'30px', 'margin-top':'10px','left': '61px','top': '-3px'}" />				
+						</joo:Sketch>
+					</joo:var>	
+				</joo:composition>
+		</script>
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="AllAnimationsPortletView">
+		<div id="AllAnimationsPortlet-Main" class="animations-list">
+			<div id="AllAnimationsPortlet-Container" class="animations_container"></div>
+			<div id="AllAnimationsPortlet-Paginator" class="animations_paginator"></div>
+		</div>
+	</script>
+	<script type="text/html" id="AllAnimationsPortlet-Item">
+		<div class="animation_container"">
+			<div class="animation_thumb">
+				<a href="#!page/Animation/id/<%=id%>">
+					<img src="<%=thumbnail%>"/>
+				</a>
+			</div>
+			<div class="animation_caption">
+				<div> 
+					<span class="animation_caption_name">
+						<a href="#!page/Animation/id/<%=id%>"><%=name%></a>
+					</span> by 
+					<span class="animation_caption_user">
+						<a><%=user%></a>
+					</span>
+				</div>
+				<div class="time"><%=since%></div> 
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="AllAnimationsPortlet-Paginator">
+		<style>
+			.animation_paginator{
+				text-align: center;
+			}
+			.animation_paginator span{
+				margin-left: 2px;
+			}
+		</style>
+		<div class="animation_paginator">
+		<%
+			var str = "";
+			for(var i=0;i<items.length;i++){
+				str += "<span>"+items[i]+"</span>";
+			}
+			print str;
+		%>
+		</div>
+	</script>
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="AnimationPortletView">
+		<div id="AnimationPortlet-Container"></div>
+	</script>
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="HeaderPortletView">
+		<a href="#"><img src="static/images/logo.png"</a>
+	</script>
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="SearchPortletView">
+		<div id="SearchPortlet-Main"></div>
+	</script>
+</div>
+<div class="portlet-data">
+	<script type="text/html" id="FooterPortletView">
+		Copyrights &copy; 2012 <a href="#">CodeMyBanner.com</a>
+	</script>
+</div>
