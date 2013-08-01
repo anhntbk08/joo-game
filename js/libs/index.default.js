@@ -18,7 +18,7 @@ function main(templateFile) {
 	}
 	
 	//var bootstrap = new Bootstrap();
-	var app = SingletonFactory.getInstance(Game);
+	var app = SingletonFactory.getInstance(Application);
 	//app.getSystemProperties().set("host.root", ApplicationRoot);
 	//app.getSystemProperties().set("page.default", "Home");
         /*

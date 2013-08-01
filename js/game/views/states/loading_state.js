@@ -1,41 +1,32 @@
-LoadingState = BaseState.extend({
-    init: function(options) {
+LoadingState = Stage.extend({
+   setupDomObject: function(options) {
         options = options || {};
+        this.name = "LoadingState";
         this._super(options);
-        this.registerObserver();
+        //this.preRender();
     },
     /*
      * show loading screen 
      * with a spin bunny and a loading text below
      * 
      */
-    preRender: function() {
-        // create a new loader
-        loader = new PIXI.AssetLoader(Models.resource.assetsToLoader);
-        loader.onComplete = function() {
-            JOOUtils.generateEvent("ChangeState", {
-                id: "gaming"
-            });
-        };
-
-        loader.onProgress = function() {
-
-        };
-        loader.load();
-
-        // add an spin bunny
-        this.bunny = new Bunny();
-        JOOUtils.generateEvent("AddtoStage", {
-            wrapper: this.bunny,
-            object: this.bunny.obj
-        });
-        this.listObject.push(this.bunny);        
+    preRender: function() {        
         
-        this.funtext = new FunText();
-        JOOUtils.generateEvent("AddtoStage", {
-            wrapper: this.funtext,
-            object: this.funtext.obj
-        });
-        this.listObject.push(this.funtext);
+       var loadingManager = new ResourceLoadingManager({
+           resources: Models.resource,
+           type : "avatar",
+           isShowProgressBar: "true"
+       });       
+       this.addChild(loadingManager);
+       loadingManager.addEventListener("complete", function(){
+           setTimeout(function(){
+               JOOUtils.changeStage("menu-state", "opacity");
+           }, Models.delayTime.switchFromLoadingPage);           
+       });
+       loadingManager.addEventListener("failed", function(){
+           
+       });
+       loadingManager.startLoading();
+       
     }
-}).implement(ObserverInterface);
+});
