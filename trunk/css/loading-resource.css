@@ -1,0 +1,55 @@
+.joo-wrapper-loading{
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(177, 149, 198); 
+    position: absolute; 
+    z-index: 666999; 
+    top: 0px; 
+    left: 0px;
+}
+.joo-wave-loading {
+    top: auto !important;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -14px;
+    left: 0px;
+    background: url(images/wave.png) repeat-x;
+    width: 100%;
+    height: 20px;
+    opacity: 1;
+    background-size: 120% 90%;
+}
+.joo-loading-mask{
+    background: rgb(177, 149, 198);
+    height: 223px;
+    width: 100%;
+    position: absolute !important;
+    min-width: auto !important;
+    top: 12px !important;
+    margin: 0 auto !important;
+    z-index: 9999;
+    max-height: 223px;
+}
+.joo-loading-bar{
+    background-image: url(http://nudieme.nudie.com.au/noncompetition/img/img-04.png);
+    height: 255px !important;
+    width: 237px;
+    position: relative !important;
+    top: 104px !important;
+    margin: 0 auto !important;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+.joo-loading-percentage {
+    top: 278px !important;
+    height: 40px;
+    width: 100px;
+    position: absolute;
+    font-size: 28px;
+    left: 50% !important;
+    text-align: center;
+    margin-left: -50px;
+    color: white;
+    font-weight: bolder;
+}

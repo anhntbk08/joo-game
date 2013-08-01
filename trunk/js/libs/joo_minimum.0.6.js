@@ -397,7 +397,7 @@ EventDispatcher = Class.extend(
 
 /**
  * @class Used for formalizing the observer design pattern,
- * especially in an event-based game
+ * especially in an event-based application
  * @interface
  */
 ObserverInterface = InterfaceImplementor.extend({
@@ -479,7 +479,7 @@ DisplayObject = EventDispatcher.extend(
 		this.setupDisplay(config);
 		this.setupDomObject(config);
 		
-		var objMgr = SingletonFactory.getInstance(Game).getObjectManager();
+		var objMgr = SingletonFactory.getInstance(Application).getObjectManager();
 		objMgr.register(this);
 	},
 	
@@ -912,7 +912,7 @@ DisplayObject = EventDispatcher.extend(
 		this.dispatchEvent('dispose');
 		
 		this.access().remove();
-		var objMgr = SingletonFactory.getInstance(Game).getObjectManager();
+		var objMgr = SingletonFactory.getInstance(Application).getObjectManager();
 		objMgr.remove(this);
 		this.listeners = undefined;
 		this.config = undefined;
@@ -1345,6 +1345,41 @@ Subject = Class.extend(
 	}
 });
 
+
+ExpressionUtils = {
+		
+	express: function(obj, expression) {
+		var s = expression ? "obj."+expression : "obj";
+		try {
+			return eval(s);
+		} catch (err) {
+			log("Expression failed: "+err);
+		}
+	},
+	
+	expressSetter: function(obj, expression, value) {
+		if (typeof value == 'string') {
+			value = value.replace(/'/g, "\\'");
+		}
+		var s = "obj."+expression+" = '"+value+"'";
+		try {
+			eval(s);
+		} catch (err) {
+			log("Expression failed: "+err);
+		}
+	},
+		
+	getMutatorMethod: function(obj, prop) {
+		var methodName = "set"+prop.substr(0, 1).toUpperCase()+prop.substr(1);
+		return obj[methodName];
+	},
+	
+	getAccessorMethod: function(obj, prop) {
+		var methodName = "get"+prop.substr(0, 1).toUpperCase()+prop.substr(1);
+		return obj[methodName];
+	}
+};
+
  /*
   * Generate Events
   */
@@ -1356,23 +1391,23 @@ JOOUtils = {
 	},
 	
 	getApplication: function() {
-		return SingletonFactory.getInstance(Game);
+		return SingletonFactory.getInstance(Application);
 	},
 	
 	getSystemProperty: function(x) {
-		return SingletonFactory.getInstance(Game).getSystemProperties().get(x);
+		return SingletonFactory.getInstance(Application).getSystemProperties().get(x);
 	},
 	
 	getResourceManager: function() {
-		return SingletonFactory.getInstance(Game).getResourceManager();
+		return SingletonFactory.getInstance(Application).getResourceManager();
 	},
 	
 	access: function(name, type, resourceLocator) {
-		return SingletonFactory.getInstance(Game).getResourceManager().requestForResource(type, name, resourceLocator, true);
+		return SingletonFactory.getInstance(Application).getResourceManager().requestForResource(type, name, resourceLocator, true);
 	},
 	
 	accessCustom: function(custom, resourceLocator) {
-		return SingletonFactory.getInstance(Game).getResourceManager().requestForCustomResource(custom,resourceLocator);
+		return SingletonFactory.getInstance(Application).getResourceManager().requestForCustomResource(custom,resourceLocator);
 	},
 	
 	generateEvent: function(eventName, eventData) {
@@ -1389,6 +1424,98 @@ JOOUtils = {
 		return attrs;
 	}
 };
+
+
+/**
+ * @class A context (or popup) menu. It can be attached to any other components
+ * @augments Sketch
+ */
+JOOContextMenu = Sketch.extend({
+	
+	setupBase: function(config)	{
+		this.items = new Array();
+		this._super(config);
+	},
+
+	/**
+	 * Add a menu item
+	 * @param {JOOMenuItem} item a menu item to be added
+	 */
+	addItem: function(item) {
+		this.items.push(item);
+		var _self = this;
+		item.addEventListener('click', function() {
+			_self.hide();
+		});
+		this.addChild(item);
+	},
+
+	/**
+	 * Get all menu items
+	 * @returns {Array} an array of menu items of this context menu
+	 */
+	getItems: function() {
+		return this.items;
+	},
+
+	/**
+	 * Show the context menu at specific position
+	 * @param {String|Number} x x position
+	 * @param {String|Number} y y position
+	 */
+	show: function(x, y) {
+		var subject = SingletonFactory.getInstance(Subject);
+		subject.notifyEvent('ContextMenuShown', this);
+		this.setLocation(x, y);
+		this.access().show();
+	},
+	
+	/**
+	 * Hide the context menu
+	 */
+	hide: function() {
+		this.access().hide();
+	}
+});
+
+
+/**
+ * @class A menu item, which is attached with a command and 
+ * can be added to a {@link JOOMenu} or {@link JOOContextMenu}
+ * <p>It supports additional configuration parameters:</p>
+ * <ul>
+ * 	<li><code>command</code> A function which is called automatically when
+ * 		the menu item is clicked
+ * 	</li>
+ * </ul>
+ * @augments Sketch 
+ */
+JOOMenuItem = Sketch.extend(
+/** @lends JOOMenuItem# */		
+{
+	
+	setupDomObject: function(config) {
+		this._super(config);
+		if (config.label == undefined) {
+			config.label = this.id;
+		}
+		this._outputText(config.label);
+		if (config.command != undefined)
+			this.onclick = config.command;
+		this.addEventListener('click', this.onclick);
+	},
+	
+	_outputText: function(label) {
+		this.access().html(label);
+	},
+
+	/**
+	 * The default command, if no command is attached to this menu
+	 * @param e
+	 */
+	onclick: function(e) {}
+});
+
 
 ContextableInterface = InterfaceImplementor.extend({
 	
@@ -1457,7 +1584,7 @@ AjaxInterface = InterfaceImplementor.extend({
 				memcacheKey += '.'+k+'.'+v;
 			}
 
-			//var root = SingletonFactory.getInstance(Game).getSystemProperties().get('host.root');
+			//var root = SingletonFactory.getInstance(Application).getSystemProperties().get('host.root');
 			//var url = root+'/'+controller+'/'+action;
 			//try to get from mem cached
 			if (type == 'GET' && cache == true)	{
@@ -1532,7 +1659,8 @@ CompositionRenderInterface = InterfaceImplementor.extend({
 		 */
 		obj.prototype.renderUIComposition = obj.prototype.renderUIComposition || function(model) {
 			model =  model || this.config.model || {};
-			var composition = $(tmpl(this.className+"View", model))[0];
+                        var temp =tmpl(this.className+"View", model);
+			var composition = $(temp)[0];
 			_self.processElement(this, this, composition, model);
 		};
 	},
@@ -1560,22 +1688,43 @@ CompositionRenderInterface = InterfaceImplementor.extend({
 		}
 		
 		switch(tagName) {
-		case "joo:composition":
-			for(var i in config) {
-				var mutator = ExpressionUtils.getMutatorMethod(currentObject, i);
-				mutator.call(currentObject, config[i]);
-			}
-			break;
-		case "joo:var":
-			var varName = $composition.attr('name');
-			currentObject = obj[varName];
-			break;
-		default:
-			if (config.custom) {
-				config.custom = eval('('+config.custom+')');
-			}
-			var className = ClassMapping[tagName.split(':')[1]];
-			currentObject = new window[className](config);
+                    case "joo:composition":
+                            for(var i in config) {
+                                    var mutator = ExpressionUtils.getMutatorMethod(currentObject, i);
+                                    mutator.call(currentObject, config[i]);
+                            }
+                            break;
+                    case "joo:var":
+                            var varName = $composition.attr('name');
+                            currentObject = obj[varName];
+                            break;
+                    default:
+                            /*
+                            if (config.custom) {
+                                    config.custom = eval('('+config.custom+')');
+                            }
+                            */
+                            if (config.extstyles) {
+                                    var temp = config.extstyles.split(";");
+                                    var result = "{";
+                                    for (var ii in temp){
+                                        //console.log("temp[", ii, "] ",temp[ii].split(":"));
+                                        if (temp[ii].split(":").length > 1 ){
+                                            result += "'" + temp[ii].split(":")[0] + "':" + "'" + temp[ii].split(":")[1] + "', ";
+                                        }
+                                    }
+                                    result += "}";
+                                    config.custom = eval('('+result+')');                                
+                            }
+                            var className = ClassMapping[tagName.split(':')[1]];
+                            if (window[className])
+                                currentObject = new window[className](config);
+                            else{
+                                return {
+                                    type: "pureHTML",
+                                    html: composition
+                                }
+                            }
 		}
 		
 		for(var i in handlers) {
@@ -1600,7 +1749,12 @@ CompositionRenderInterface = InterfaceImplementor.extend({
 		
 		for(var i=0; i<children.length; i++) {
 			var child = this.processElement(root, currentObject, children[i], model);
-			currentObject.addChild(child);
+                        if (child.type === "pureHTML"){
+                            currentObject.access().append(child.html);
+                        }
+                        else{
+                            currentObject.addChild(child);
+                        }
 		}
 		return currentObject;
 	}
@@ -1610,13 +1764,17 @@ CompositionRenderInterface = InterfaceImplementor.extend({
 Stage = UIComponent.extend(
 /** @lends Stage# */
 {
-	setupBase: function(config)	{
+	setupBase: function(config){
 		this.stage = this;
 		this.id = config.id;
 		this.allowMultiSelect = config.allowMultiSelect || true;
 		this.selectedObjects = Array();
 		this._super(config);
+                this.registerObserver();
 	},
+        preRender: function(){
+    
+        },
 	
 	/**
 	 * Get a list of current selected objects.
@@ -1706,17 +1864,87 @@ Stage = UIComponent.extend(
 	},
 	
 	setupDomObject: function(config) {
-		this.domObject = JOOUtils.access(this.id);
+                // **TODO: This for making ui in xml 
+		//this.domObject = JOOUtils.access(this.id);
+                this.domObject = JOOUtils.accessCustom(this.toHtml());
+		this.setAttribute('id', this.id);
 		this.access().addClass('joo-'+this.className.toLowerCase());
-		this.access().addClass('joo-uicomponent');
+		this.access().addClass('joo-uicomponent joo-stage');
 
 		if (config.layout == undefined)
 			config.layout = 'block';
 		this.setLayout(config.layout);
 		this.setupContextMenu();
-	}
+	},
+        onEndSwitchState: function(e){
+            if (Models.pages.states[e.state] == this.name){
+                this.onPageStartShow();
+            }
+        },                
+        onPageStartShow: function(){
+            //console.log("page " + this.name + " start show");
+        },
+        onStartSwitchState: function(e){
+    
+        }
+}).implement(ObserverInterface);
+
+JOOButton = UIComponent.extend(
+/** @lends JOOButton# */		
+{
+	
+	setupDomObject: function(config) {
+		this._super(config);
+		if (config.lbl != undefined) {
+			this.access().html(config.lbl);
+		}
+		this.addEventListener('click', function(e) {
+			this.onclick(e);
+		});
+//		this.addEventListener('mousedown', function(e) {
+//			this.access().addClass('focus');
+//		});
+	},
+	
+	toHtml: function()	{
+		return "<a></a>";
+	},
+	
+	/**
+	 * Command attached to the button.
+	 * @param e the event object
+	 */
+	onclick: function(e) {}
 });
 
+JOOLabel = UIComponent.extend	(
+/** @lends JOOLabel# */		
+{
+	setupDomObject: function(config) {
+		this._super(config);
+		this.access().html(config.lbl);
+	},
+	
+	toHtml: function()	{
+		return "<label></label>";
+	},
+	
+	/**
+	 * Get the text of the label
+	 * @returns {String} the label's text
+	 */
+	getText: function()	{
+		return this.access().html();
+	},
+	
+	/**
+	 * Change the text of the label
+	 * @param {String} txt the new text
+	 */
+	setText: function(txt)	{
+		this.access().html(txt);
+	}
+});
 
 
 
@@ -1907,19 +2135,22 @@ ObjectManager = Class.extend(
 	}
 });
 
-Game = Class.extend(
-/** @lends Game# */
+
+
+
+Application = Class.extend(
+/** @lends Application# */
 {
 	/**
 	 * Initialize fields
-	 * @class This class is the entrypoint of JOO games. 
+	 * @class This class is the entrypoint of JOO applications. 
 	 * @singleton
 	 * @augments Class
 	 * @constructs
 	 * @see SingletonFactory#getInstance
 	 */
 	init: function(){
-		if(Game.singleton == undefined){
+		if(Application.singleton == undefined){
 			throw "Singleton class, can not be directly created !";
 			return undefined;
 		}
@@ -1928,15 +2159,15 @@ Game = Class.extend(
 	},
 	
 	/**
-	 * Access the game's resource manager
-	 * @returns {ResourceManager} the game's resource manager
+	 * Access the application's resource manager
+	 * @returns {ResourceManager} the application's resource manager
 	 */
 	getResourceManager: function()	{
 		return this.resourceManager;
 	},
 	
 	/**
-	 * Change the game's resource manager
+	 * Change the application's resource manager
 	 * @param {ResourceManager} rm the resource manager to be used
 	 */
 	setResourceManager: function(rm)	{
@@ -1952,7 +2183,7 @@ Game = Class.extend(
 	},
 		
 	/**
-	 * Start the game. This should be called only once
+	 * Start the application. This should be called only once
 	 */
 	begin: function(){            
             this.page = new Page();
@@ -1961,8 +2192,8 @@ Game = Class.extend(
 	},
 
 	/**
-	 * Get the game's object manager
-	 * @returns {ObjectManager} the game's object manager
+	 * Get the application's object manager
+	 * @returns {ObjectManager} the application's object manager
 	 */
 	getObjectManager: function()	{
 		if (this.objMgr == undefined)
@@ -1971,7 +2202,7 @@ Game = Class.extend(
 	}
 });
 
-Page = DisplayObject.extend(
+Page = DisplayObjectContainer.extend(
 /** @lends Page# */
 {
 	/**
@@ -1980,13 +2211,23 @@ Page = DisplayObject.extend(
 	 * will be unloaded. Portlets which exists between multiple pages will be
 	 * reloaded.
 	 */
-	attachStages: function(){       
-            this.stages = [];
+        init: function(config)	{
+		this._super(config);
+	},
+        
+	attachStages: function(){
+            this.stages = [];            
             for (var ii in Models.pages.states){
-                var fn = window[Models.pages.states[ii]];
-                console.log("fn ",fn);
-                this.stages[ii] = fn();
+                var fn = window[Models.pages.states[ii]];                
+                var fnPresenter = window[Models.pages.presenter[ii]];                 
+                this.stages[ii] = new fn({id: ii});
+                if (fnPresenter){
+                    var presenter = new fnPresenter(this.stages[ii]);
+                }                
+                this.stages[ii].preRender();
+                this.addChild(this.stages[ii]);
             }
+            JOOUtils.selectStage(Models.pages["default-state"]);    
 	},
 	/**
 	 * Attach plugins to the page. 
@@ -2007,8 +2248,7 @@ Page = DisplayObject.extend(
 //			return;
 //		this.pagename = pagename;
 //		this.layout = data.layout;
-//		this.plugins = data.plugins;
-                console.log("page began ....");
+//		this.plugins = data.plugins;S
 		this.attachPlugins();
 		JOOUtils.generateEvent("PageBegan");
 	},

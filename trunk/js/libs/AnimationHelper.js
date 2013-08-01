@@ -8,492 +8,494 @@
  *  
  */
 AnimationTypesHelper = {
-        rollAndFly : {
-            name : "Roll and Fly",
-            action : "rollAndFly",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 1100,
-                height: 200,
-                soundname: ""
-            }
-        },
-        flyAndRoll : {
-            name : "Fly And Roll",
-            action : "flyAndRoll",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 1100,
-                height: 200,
-                soundname: ""
-            }
-        },
-        ballFlyRoll: {
-            name : "Ball Fly Roll",
-            action: "ballFlyRoll",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 1300,
-                height: 200,
-                soundname: ""
-            }
-        },
-        realJump : {
-            name : "Real Jump",
-            action : "realJump",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 1000,
-                originx: 50,
-                originy: 100,
-                height: 100,
-                soundname: ""
-            }
-        },
-        simpleJump : {
-            name : "Simple Jump",
-            action : "simpleJump",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 800,
-                height: 80,
-                soundname: ""
-            }
-        },
-        magicFly : {
-            name : "Magic Fly",
-            action : "magicFly",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 9300,
-                originx: 50,
-                originy: 100,
-                height: 350,
-                soundname: ""
-            }
-        },
-        flyAndShake:{
-            name : "Fly And Shake",
-            action : "flyAndShake",
-            type : "flyOrJumpAnimations",
-            config :{
-                time: 2100, 
-                height: 50,
-                soundname: ""
-            }
-        },
-        ballEffect :{
-            name : "Ball effect",
-            action : "ballEffect",
-            type : "flyOrJumpAnimations",
-            config :{
-                height: 100, 
-                time: 500,
-                soundname: ""
-            }
-        },
+    rollAndFly: {
+        name: "Roll and Fly",
+        action: "rollAndFly",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 1100,
+            height: 200,
+            soundname: ""
+        }
+    },
+    flyAndRoll: {
+        name: "Fly And Roll",
+        action: "flyAndRoll",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 1100,
+            height: 200,
+            soundname: ""
+        }
+    },
+    ballFlyRoll: {
+        name: "Ball Fly Roll",
+        action: "ballFlyRoll",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 1300,
+            height: 200,
+            soundname: ""
+        }
+    },
+    realJump: {
+        name: "Real Jump",
+        action: "realJump",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 100,
+            height: 100,
+            soundname: ""
+        }
+    },
+    simpleJump: {
+        name: "Simple Jump",
+        action: "simpleJump",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 800,
+            height: 80,
+            soundname: ""
+        }
+    },
+    magicFly: {
+        name: "Magic Fly",
+        action: "magicFly",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 9300,
+            originx: 50,
+            originy: 100,
+            height: 350,
+            soundname: ""
+        }
+    },
+    flyAndShake: {
+        name: "Fly And Shake",
+        action: "flyAndShake",
+        type: "flyOrJumpAnimations",
+        config: {
+            time: 2100,
+            height: 50,
+            soundname: ""
+        }
+    },
+    ballEffect: {
+        name: "Ball effect",
+        action: "ballEffect",
+        type: "flyOrJumpAnimations",
+        config: {
+            height: 100,
+            time: 500,
+            soundname: ""
+        }
+    },
 //    },
 //    stableAnimations : {
-		playSprite: {
-			name : "Play (Sprite/Audio/Video)",
-            action : "playSprite",
-            type : "stableAnimations",
-            config : {
-                time: 2000,
-                soundname: ""
-            }
-		},
-        rollOnly: {
-            name : "Roll Only",
-            action : "rollOnly",
-            type : "stableAnimations",
-            config :{
-                time: 1300,
-                originx: 50,
-                originy: 0,
-                soundname: ""
-            }
-        },
-        treeShake : {
-            name : "Tree Shake",
-            action: "treeShake",
-            type : "stableAnimations",
-            config :{
-                time:2050, 
-                originx: 50,
-                originy: 100,
-                soundname: ""
-            }
-        },
-        leafFalling : {
-            name : "Leaf Falling ",
-            action: "leafFalling",
-            type : "stableAnimations",
-            config :{
-                time: 10810,
-                height: 500,
-                direct: 'left',
-                soundname: ""
-            }
-        },
-        bounce : {
-            name : "Bounce",
-            action : "bounce",
-            type : "stableAnimations",
-            config : {
-                time: 800,
-                originx: 50,
-                originy: 100,
-                soundname: ""
-            }
-        },
-        pendulum : {
-            name : "Pendulum ",
-            action : "pendulum",
-            type : "stableAnimations",
-            config : {
-                time: 3600,
-                originx: 50,
-                originy: 0,
-                soundname: ""
-            }
-        },
-        pureOpacity :{
-        	name : "pureOpacity",
-            action : "pureOpacity",
-            type : "stableAnimations",
-            config : {
-                starttime: 500,
-				opacity1 :0,
-				endtime :500,
-				opacity2 :1,
-				datetime :1000,
-				count :1,
-                soundname: ""
-            }
-        },
-//    },
-//    opacityAnimations : {
-        appearOneTime :{
-            name : "Appear one time",
-            action : "appearOneTime",
-            type : "opacityAnimations",
-            config : {
-                time: 1000,
-                soundname: ""
-            }
-        },
-       
-        flyThenDisappear : {
-            name : "Fly then disappear",
-            action : "flyThenDisappear",
-            type : "opacityAnimations",
-            config :{
-                time: 1000,
-                transx: 80,
-                transy: -150,
-                soundname: ""
-            }
-        },
-       
-        flyThenAppearAgain : {
-            name : "Fly then appear again ",
-            action : "flyThenAppearAgain",
-            type : "opacityAnimations",
-            config :{
-                time: 800,
-                transx: 200,
-                transy: 400,
-                soundname: ""
-            }
-        },
-        
-        wheelRotate : {
-            name : "Wheel rotate ",
-            action : "wheelRotate",
-            type : "stableAnimations",
-            config :{
-                time: 1000,
-				status:1,
-                speed: 1000,
-                soundname: ""
-            }
-        },
-        waveHand :{
-        	name : "Wave hand",
-        	action : "waveHand",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-                originx: 50,
-                originy: 100,
-                degfirst : 20,
-                deglast : -10,
-                count :1,
-                soundname: ""
-            }
-        },
-         scaleUpDown :{
-            name : "Scale up down",
-            action : "scaleUpDown",
-            type : "stableAnimations",
-            config : {
-                time: 1000,
-                soundname: ""
-            }
-        },
-        moveNewPosition :{
-        	name : "Move new position",
-        	action : "moveNewPosition",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	posx : 0,
-               	posy : 0,
-				posz : 0,
-                soundname: ""
-                
-            }
-        },
-        moveThenComeBack :{
-        	name : "Move then come back",
-        	action : "moveThenComeBack",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	posx : 0,
-               	posy : 0,
-				posz : 0,
-                soundname: ""
-                
-            }
-        },
-        moveSmooth :{
-        	name : "Move Smooth",
-        	action : "moveSmooth",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	posx : 0,
-               	posy : 0,
-				posz : 0,
-               	count: 1,
-                soundname: ""
-                
-            }
-        },
-        jumpOnTime :{
-        	name : "Jump on Time  ",
-        	action : "jumpOnTime",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	count : 1,
-               	height : 20,
-                soundname: ""
-                
-            }
-        },
-        rotateDeg :{
-        	name : "Rotate deg",
-        	action : "rotateDeg",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	rotatex : 0 ,
-				rotatey : 0,
-				rotate : 0,
-               	originx: 50,
-               	originy: 0,
-                soundname: ""
-                
-            }
-        },
-         moveAndRoll:{
-        	name : "Move and roll ",
-        	action : "moveAndRoll",
-        	 type : "stableAnimations",
-            config :{
-                time: 1000,
-               	positionx : 100,
-               	positiony : 100,
-                soundname: ""
-                
-            }
-        },
-        scaleObject:{
-        	name: "Scale Object",
-        	action : "scaleObject",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-               	scalex : 1,
-               	scaley : 1,
-				scalez : 1,
-               	originx : 50,
-               	originy : 100,
-               	count : 1,
-                soundname: ""
-                
-            }
-        },
-        flyThenScale:{
-        	name: "Fly then scale",
-        	action : "flyThenScale",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-               	scalex : 1,
-               	scaley : 1,
-				scalez : 1,
-               	posx :100,
-               	posy :100,
-               	count : 1,
-                soundname: ""
-                
-            }
-        },
-        scaleObjectOnly:{
-        	name: "Scale object Only",
-        	action : "scaleObjectOnly",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-                originx:50,
-                originy:50,
-               	scalex : 1,
-               	scaley : 1,
-				scalez : 1,
-                soundname: ""
+    playSprite: {
+        name: "Play (Sprite/Audio/Video)",
+        action: "playSprite",
+        type: "stableAnimations",
+        config: {
+            time: 2000,
+            soundname: ""
         }
-        
-        },
+    },
+    rollOnly: {
+        name: "Roll Only",
+        action: "rollOnly",
+        type: "stableAnimations",
+        config: {
+            time: 1300,
+            originx: 50,
+            originy: 0,
+            soundname: ""
+        }
+    },
+    treeShake: {
+        name: "Tree Shake",
+        action: "treeShake",
+        type: "stableAnimations",
+        config: {
+            time: 2050,
+            originx: 50,
+            originy: 100,
+            soundname: ""
+        }
+    },
+    leafFalling: {
+        name: "Leaf Falling ",
+        action: "leafFalling",
+        type: "stableAnimations",
+        config: {
+            time: 10810,
+            height: 500,
+            direct: 'left',
+            soundname: ""
+        }
+    },
+    bounce: {
+        name: "Bounce",
+        action: "bounce",
+        type: "stableAnimations",
+        config: {
+            time: 800,
+            originx: 50,
+            originy: 100,
+            soundname: ""
+        }
+    },
+    pendulum: {
+        name: "Pendulum ",
+        action: "pendulum",
+        type: "stableAnimations",
+        config: {
+            time: 3600,
+            originx: 50,
+            originy: 0,
+            soundname: ""
+        }
+    },
+    pureOpacity: {
+        name: "pureOpacity",
+        action: "pureOpacity",
+        type: "stableAnimations",
+        config: {
+            starttime: 500,
+            opacity1: 0,
+            endtime: 500,
+            opacity2: 1,
+            datetime: 1000,
+            count: 1,
+            soundname: ""
+        }
+    },
+    appearOneTime: {
+        name: "Appear one time",
+        action: "appearOneTime",
+        type: "opacityAnimations",
+        config: {
+            time: 1000,
+            soundname: ""
+        }
+    },
+    flyThenDisappear: {
+        name: "Fly then disappear",
+        action: "flyThenDisappear",
+        type: "opacityAnimations",
+        config: {
+            time: 1000,
+            transx: 80,
+            transy: -150,
+            soundname: ""
+        }
+    },
+    flyThenAppearAgain: {
+        name: "Fly then appear again ",
+        action: "flyThenAppearAgain",
+        type: "opacityAnimations",
+        config: {
+            time: 800,
+            transx: 200,
+            transy: 400,
+            soundname: ""
+        }
+    },
+    wheelRotate: {
+        name: "Wheel rotate ",
+        action: "wheelRotate",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            status: 1,
+            speed: 1000,
+            soundname: ""
+        }
+    },
+    waveHand: {
+        name: "Wave hand",
+        action: "waveHand",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 100,
+            degfirst: 20,
+            deglast: -10,
+            count: 1,
+            soundname: ""
+        }
+    },
+    scaleUpDown: {
+        name: "Scale up down",
+        action: "scaleUpDown",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            soundname: ""
+        }
+    },
+    moveNewPosition: {
+        name: "Move new position",
+        action: "moveNewPosition",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            posx: 0,
+            posy: 0,
+            posz: 0,
+            soundname: ""
 
-        opacityObject :{
-        	name: "Opacity Object",
-        	action : "opacityObject",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-                opacity:0,
-                soundname: ""
         }
-        },
-		textScale:{
-			name: "Text Scale",
-        	action : "textScale",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-				originx:50,
-				originy:50,
-                count:1,
-                soundname: ""
+    },
+    moveThenComeBack: {
+        name: "Move then come back",
+        action: "moveThenComeBack",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            posx: 0,
+            posy: 0,
+            posz: 0,
+            soundname: ""
+
         }
-		},
-		textScaleRevert:{
-			name: "Text Scale Revert",
-        	action : "textScaleRevert",
-        	type : "stableAnimations",
-            config :{
-                time: 1000,
-				originx:50,
-				originy:50,
-                count:1,
-                soundname: ""
+    },
+    moveSmooth: {
+        name: "Move Smooth",
+        action: "moveSmooth",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            posx: 0,
+            posy: 0,
+            posz: 0,
+            count: 1,
+            soundname: ""
+
         }
-		},
-		moveThenComebackOnTime:{
-			name :"Move Then Comeback On Time",
-			action :"moveThenComebackOnTime",
-			type:"stableAnimations",
-			config :{
-				time: 1000,
-               	posx : 100,
-               	posy : 100,
-				posz : 0,
-				endtime :1000,
-				count : 1,
-                soundname: ""
-			}
-		},
-        doNothing:{
-			name :"Do Nothing",
-			action :"doNothing",
-			type:"stableAnimations",
-			config :{
-				time: 1000
-        	}
-		},
-		springEffect:{
-			name :"Spring Effect",
-			action :"springEffect",
-			type:"stableAnimations",
-			config :{
-				time :1000,
-				originx :50,
-				originy :100,
-				height :200,
-				count :1,
-				soundname: ""
-			}
-		},
-		rotateDegThenComeback:{
-			name:"RotateDeg then comeback",
-			action:"rotateDegThenComeback",
-			type:"stableAnimations",
-			config:{
-				time : 1000,
-				endtime :100,
-				originx : 50,
-				originy : 50,
-				rotatex : 30,
-				rotatey : 0,
-				rotatez : 0, 
-				count : 1,
-				soundname : ""
-			}
-		},
-		springBounce:{
-			name:"Spring Bounce",
-			action:"springBounce",
-			type:"stableAnimations",
-			config:{
-				time:1000,
-				originx:50,
-				originy:100,
-				height:10,
-				count:1,
-				soundname : ""
-			}
-		},
-		flyThenRotate:{
-			name:"Fly Then Rotate",
-			action :"flyThenRotate",
-			type:"stableAnimations",
-			config:{
-				time:1000,
-				originx:50,
-				originy:100,
-				posx:0,
-				posy:-100,
-				posz:0,
-				rotatex:0,
-				rotatey:0,
-				rotate:30,
-				count:1,
-				soundname : ""
-			}
-		},
-//    customAnimations : {
-        customAnimations : {
-            name : "Custom animation yourself",
-            action : "customAnimations",
-            config :{
-                time: 0,
-                soundname: ""
-            }
+    },
+    jumpOnTime: {
+        name: "Jump on Time  ",
+        action: "jumpOnTime",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            count: 1,
+            height: 20,
+            soundname: ""
+
         }
+    },
+    rotateDeg: {
+        name: "Rotate deg",
+        action: "rotateDeg",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            rotatex: 0,
+            rotatey: 0,
+            rotate: 0,
+            originx: 50,
+            originy: 0,
+            soundname: ""
+
+        }
+    },
+    moveAndRoll: {
+        name: "Move and roll ",
+        action: "moveAndRoll",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            positionx: 100,
+            positiony: 100,
+            soundname: ""
+
+        }
+    },
+    scaleObject: {
+        name: "Scale Object",
+        action: "scaleObject",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            scalex: 1,
+            scaley: 1,
+            scalez: 1,
+            originx: 50,
+            originy: 100,
+            count: 1,
+            soundname: ""
+
+        }
+    },
+    flyThenScale: {
+        name: "Fly then scale",
+        action: "flyThenScale",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            scalex: 1,
+            scaley: 1,
+            scalez: 1,
+            posx: 100,
+            posy: 100,
+            count: 1,
+            soundname: ""
+
+        }
+    },
+    scaleObjectOnly: {
+        name: "Scale object Only",
+        action: "scaleObjectOnly",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 50,
+            scalex: 1,
+            scaley: 1,
+            scalez: 1,
+            soundname: ""
+        }
+
+    },
+    opacityObject: {
+        name: "Opacity Object",
+        action: "opacityObject",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            opacity: 0,
+            soundname: ""
+        }
+    },
+    textScale: {
+        name: "Text Scale",
+        action: "textScale",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 50,
+            count: 1,
+            soundname: ""
+        }
+    },
+    textScaleRevert: {
+        name: "Text Scale Revert",
+        action: "textScaleRevert",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 50,
+            count: 1,
+            soundname: ""
+        }
+    },
+    moveThenComebackOnTime: {
+        name: "Move Then Comeback On Time",
+        action: "moveThenComebackOnTime",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            posx: 100,
+            posy: 100,
+            posz: 0,
+            endtime: 1000,
+            count: 1,
+            soundname: ""
+        }
+    },
+    doNothing: {
+        name: "Do Nothing",
+        action: "doNothing",
+        type: "stableAnimations",
+        config: {
+            time: 1000
+        }
+    },
+    springEffect: {
+        name: "Spring Effect",
+        action: "springEffect",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 100,
+            height: 200,
+            count: 1,
+            soundname: ""
+        }
+    },
+    rotateDegThenComeback: {
+        name: "RotateDeg then comeback",
+        action: "rotateDegThenComeback",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            endtime: 100,
+            originx: 50,
+            originy: 50,
+            rotatex: 30,
+            rotatey: 0,
+            rotatez: 0,
+            count: 1,
+            soundname: ""
+        }
+    },
+    springBounce: {
+        name: "Spring Bounce",
+        action: "springBounce",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 100,
+            height: 10,
+            count: 1,
+            soundname: ""
+        }
+    },
+    flyThenRotate: {
+        name: "Fly Then Rotate",
+        action: "flyThenRotate",
+        type: "stableAnimations",
+        config: {
+            time: 1000,
+            originx: 50,
+            originy: 100,
+            posx: 0,
+            posy: -100,
+            posz: 0,
+            rotatex: 0,
+            rotatey: 0,
+            rotate: 30,
+            count: 1,
+            soundname: ""
+        }
+    },
+    swapObject: {
+        name: "Swap two object then disapper",
+        action: "swapObjectThenDisappear",
+        type: "stableAnimations",
+        config: {
+            time: 1000,           
+            soundname: ""
+        }
+    },
+    customAnimations: {
+        name: "Custom animation yourself",
+        action: "customAnimations",
+        config: {
+            time: 0,
+            soundname: ""
+        }
+    }
 //    }
 }
 
@@ -514,7 +516,7 @@ AnimationHelperFactory = {
 
 AnimationUtils = {
 	animation: function (obj, time, att, originx, originy, scax, scay, scaz, rotatez, rotatey, rotatex, transx, transy, transz) {
-		obj.setStyle('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
+		obj.css('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
 		if (originx && (typeof(originx) != 'string' || originx.indexOf('px') == -1)) {
 			originx += '%';
 		}
@@ -522,8 +524,8 @@ AnimationUtils = {
 		if (originy && (typeof(originy) != 'string' || originy.indexOf('px') == -1)) {
 			originy += '%';
 		}
-		obj.setStyle('-webkit-transform-origin',originx+' ' +originy);
-		obj.setStyle('-webkit-transform','translate3d('+transx+'px,' +transy+'px,' +transz+'px) scale3d('+scax+',' +scay+','+scaz+') rotateX('+rotatex+'deg) rotateY('+rotatey+'deg) rotateZ('+rotatez+'deg) ');
+		obj.css('-webkit-transform-origin',originx+' ' +originy);
+		obj.css('-webkit-transform','translate3d('+transx+'px,' +transy+'px,' +transz+'px) scale3d('+scax+',' +scay+','+scaz+') rotateX('+rotatex+'deg) rotateY('+rotatey+'deg) rotateZ('+rotatez+'deg) ');
 	},
 	setOrigin : function(obj,originx,originy){
 		if (originx && (typeof(originx) != 'string' || originx.indexOf('px') == -1)) {
@@ -533,23 +535,23 @@ AnimationUtils = {
 		if (originy && (typeof(originy) != 'string' || originy.indexOf('px') == -1)) {
 			originy += '%';
 		}
-		obj.setStyle('-webkit-transform-origin',originx+' ' +originy);
+		obj.css('-webkit-transform-origin',originx+' ' +originy);
 	},
 	setOpacity: function(obj, time, att, opac){
-		obj.setStyle('-webkit-transition', 'opacity '+time+'ms '+att+'');
-		obj.setStyle('opacity',+opac);
+		obj.css('-webkit-transition', 'opacity '+time+'ms '+att+'');
+		obj.css('opacity',+opac);
 	},
 	
 	rotateOnly: function(obj, time, att, originx, originy, rotate){
-		obj.setStyle('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
+		obj.css('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
 		if (originx && (typeof(originx) != 'string' || originx.indexOf('px') == -1)) {
 			originx += '%';
 		}
 		if (originy && (typeof(originy) != 'string' || originy.indexOf('px') == -1)) {
 			originy += '%';
 		}
-		obj.setStyle('-webkit-transform-origin',originx+' ' +originy);
-		obj.setStyle('-webkit-transform','rotate('+rotate+'deg)');
+		obj.css('-webkit-transform-origin',originx+' ' +originy);
+		obj.css('-webkit-transform','rotate('+rotate+'deg)');
 	},
 	
 	scaleOnly: function(obj, time, att, originx, originy, scax, scay){
@@ -559,15 +561,15 @@ AnimationUtils = {
 		if (originy && (typeof(originy) != 'string' || originy.indexOf('px') == -1)) {
 			originy += '%';
 		}
-		obj.setStyle('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
-		obj.setStyle('-webkit-transform-origin',originx+' ' +originy);
-		obj.setStyle('-webkit-transform','scale('+scax+',' +scay+')');
+		obj.css('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
+		obj.css('-webkit-transform-origin',originx+' ' +originy);
+		obj.css('-webkit-transform','scale('+scax+',' +scay+')');
 	},
 	
 	moveOnly: function(obj, time, att, transx, transy){
-		obj.setStyle('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
-		obj.setStyle('-webkit-transform-origin','50% 50%');
-		obj.setStyle('-webkit-transform','translate3d('+transx+'px,' +transy+'px, 0px)');
+		obj.css('-webkit-transition', '-webkit-transform '+time+'ms '+att+'');
+		obj.css('-webkit-transform-origin','50% 50%');
+		obj.css('-webkit-transform','translate3d('+transx+'px,' +transy+'px, 0px)');
 	},
 	
 	runUtilsAnimation: function(actionName, arg, obj) {
@@ -580,9 +582,9 @@ AnimationUtils = {
         
 		setTimeout(function() {
 			obj._interacting = false;
-			obj.setStyle('-webkit-transition', '');
-			obj.setStyle('-webkit-transform', '');
-			obj.setStyle('opacity', '1');
+			obj.css('-webkit-transition', '');
+			obj.css('-webkit-transform', '');
+			obj.css('opacity', '1');
 		}, 1500);
 	},
 	
@@ -617,9 +619,9 @@ AnimationUtils = {
 		helper.animate(obj);	
 		return;
 		setTimeout(function() {			
-			obj.setStyle('-webkit-transition', '');
-			obj.setStyle('-webkit-transform', '');
-			obj.setStyle('opacity', '1');
+			obj.css('-webkit-transition', '');
+			obj.css('-webkit-transform', '');
+			obj.css('opacity', '1');
 		}, 1500);
 	}
 }
@@ -638,7 +640,7 @@ AbstractAnimationHelper = Class.extend({
 				this.config[i] = config[i];
 		}
 		if (this.config.origin)
-			obj.setStyle('-webkit-transform-origin', this.config.origin.x + '% ' + this.config.origin.y + '%');
+			obj.css('-webkit-transform-origin', this.config.origin.x + '% ' + this.config.origin.y + '%');
 		if (this.config.soundname) {
 			var audio = new Audio();
 			audio.src = this.config.soundname;
@@ -1087,7 +1089,7 @@ FlyThenDisappearAnimationHelper = AbstractAnimationHelper.extend({
 		_self.animation(obj, time, 'ease-in', 50, 50, 0, 0, 1, 0, 0, 0,  transx, transy, 0);
 		setTimeout(function(){
 			_self.setOpacity(obj, 10, 'linear', 0);
-			_obj.setStyle('display','none');
+			_obj.css('display','none');
 			obj._interacting = false;
 		},time/10);
 		
@@ -1273,14 +1275,14 @@ TextScaleRevertAnimationHelper = AbstractAnimationHelper.extend({
 		var posX = this.config.posX || 0;
 		var posY = this.config.posY || 0;
 		
-		obj.setStyle('-webkit-transition', '-webkit-transform '+(time/2)+'ms ease-in');
-		obj.setStyle('-webkit-transform', 'translate3d('+posX+'px, '+posY+'px, 0)');
+		obj.css('-webkit-transition', '-webkit-transform '+(time/2)+'ms ease-in');
+		obj.css('-webkit-transform', 'translate3d('+posX+'px, '+posY+'px, 0)');
 		setTimeout(function() {
-			obj.setStyle('-webkit-transition', '0ms ease-in');
-			obj.setStyle('-webkit-transform', 'translate3d('+(-posX)+'px, '+(-posY)+'px, 0)');
+			obj.css('-webkit-transition', '0ms ease-in');
+			obj.css('-webkit-transform', 'translate3d('+(-posX)+'px, '+(-posY)+'px, 0)');
 			setTimeout(function() {
-				obj.setStyle('-webkit-transition', '-webkit-transform '+(time/2)+'ms ease-in');
-				obj.setStyle('-webkit-transform', 'translate3d(0, 0, 0)');
+				obj.css('-webkit-transition', '-webkit-transform '+(time/2)+'ms ease-in');
+				obj.css('-webkit-transform', 'translate3d(0, 0, 0)');
 				setTimeout(function() {
 					obj._interacting = false;
 				}, time/2+100);
@@ -1310,14 +1312,14 @@ PureOpacityAnimationHelper = AbstractAnimationHelper.extend({
 			return;
 		var _self = this;
 		if(opacity2==0){
-			obj.setStyle('pointer-events','inherit');
-			obj.setStyle('-webkit-transition','opacity '+starttime+'ms linear');
-			obj.setStyle('opacity',opacity1);
+			obj.css('pointer-events','inherit');
+			obj.css('-webkit-transition','opacity '+starttime+'ms linear');
+			obj.css('opacity',opacity1);
 			setTimeout(function() {
-				obj.setStyle('-webkit-transition','opacity '+endtime+'ms linear');
-				obj.setStyle('opacity', opacity2);
+				obj.css('-webkit-transition','opacity '+endtime+'ms linear');
+				obj.css('opacity', opacity2);
 				setTimeout(function(){
-					obj.setStyle('pointer-events','none');
+					obj.css('pointer-events','none');
 					this.timeout = setTimeout(function() {
 					_self.pureanimate(obj, starttime, opacity1, endtime, opacity2 , datetime , count-1);
 					}, parseInt(datetime/2));
@@ -1326,12 +1328,12 @@ PureOpacityAnimationHelper = AbstractAnimationHelper.extend({
 			
 		}
 		else {
-			obj.setStyle('pointer-events','inherit');
-			obj.setStyle('-webkit-transition','opacity '+starttime+'ms linear');
-			obj.setStyle('opacity',opacity1);
+			obj.css('pointer-events','inherit');
+			obj.css('-webkit-transition','opacity '+starttime+'ms linear');
+			obj.css('opacity',opacity1);
 			setTimeout(function() {
-				obj.setStyle('-webkit-transition','opacity '+endtime+'ms linear');
-				obj.setStyle('opacity', opacity2);
+				obj.css('-webkit-transition','opacity '+endtime+'ms linear');
+				obj.css('opacity', opacity2);
 				this.timeout = setTimeout(function() {
 				_self.pureanimate(obj, starttime, opacity1, endtime, opacity2 , datetime , count-1);
 				}, parseInt(datetime/2));
@@ -1347,20 +1349,20 @@ WheelRotateAnimationHelper = AbstractAnimationHelper.extend({
 		// obj.access().addClass('wheelfx');
 		var status = this.config.status != undefined ? this.config.status :1;
 		if(status==1){
-		obj.setStyle('-webkit-animation', this.config.speed+'ms wheel-fx linear infinite');
+		obj.css('-webkit-animation', this.config.speed+'ms wheel-fx linear infinite');
 		if (this.config.time != -1) {
 			setTimeout(function(){
-				obj.setStyle('-webkit-animation', '');
+				obj.css('-webkit-animation', '');
 				// obj.access().removeClass('wheelfx');
 				obj._interacting = false;
 			},this.config.time/1);
 		}
 		}
 		else if(status==-1){
-			obj.setStyle('-webkit-animation', this.config.speed+'ms unwheel-fx linear infinite');
+			obj.css('-webkit-animation', this.config.speed+'ms unwheel-fx linear infinite');
 			if (this.config.time != -1) {
 				setTimeout(function(){
-					obj.setStyle('-webkit-animation', '');
+					obj.css('-webkit-animation', '');
 					// obj.access().removeClass('wheelfx');
 					obj._interacting = false;
 				},this.config.time/1);
@@ -1411,9 +1413,9 @@ RotateDegAnimationHelper = AbstractAnimationHelper.extend({
 		var rotatey = this.config.rotatey || 0;
 		var rotatez = this.config.rotate || 0;
 		
-		obj.setStyle('-webkit-transition','-webkit-transform '+time+'ms linear' );
+		obj.css('-webkit-transition','-webkit-transform '+time+'ms linear' );
 		AnimationUtils.setOrigin(obj,originx,originy);
-		obj.setStyle('-webkit-transform','rotateX('+rotatex+'deg) rotateY('+rotatey+'deg) rotateZ('+rotatez+'deg)');
+		obj.css('-webkit-transform','rotateX('+rotatex+'deg) rotateY('+rotatey+'deg) rotateZ('+rotatez+'deg)');
 		setTimeout(function() {
 			obj._interacting = false;
 		}, time/1);
@@ -1591,8 +1593,11 @@ ScaleObjectOnlyAnimationHelper = AbstractAnimationHelper.extend({
 		var scalex = this.config.scalex != undefined ? this.config.scalex : 1;
 		var scaley = this.config.scaley != undefined ? this.config.scaley : 1;
 		var scalez = this.config.scalez != undefined ? this.config.scalez : 1;
+                var posx = this.config.posx != undefined ? this.config.posx : 0;
+		var posy = this.config.posy != undefined ? this.config.posy : 0;
+		var posz = this.config.posz != undefined ? this.config.posz : 0;
 		var _self = this;
-		_self.animation(obj, time,'ease-in', originx, originy, scalex, scaley, scalez, 0, 0, 0, 0, 0, 0);
+		_self.animation(obj, time,'ease-in', originx, originy, scalex, scaley, scalez, 0, 0, 0, posx, posy, posz);
 		obj._interacting = false;
 		
 	}
@@ -1605,21 +1610,25 @@ MoveSmoothAnimationHelper = AbstractAnimationHelper.extend({
 		var posy = this.config.posy != undefined ? this.config.posy : 0;
 		var posz = this.config.posz ||0;
 		var count = this.config.count || 1;
-		
-		this.movesmoothanimation(obj,time,posx,posy,posz,count);
+                var oldPosition = this.config.oldPosition;
+               this.movesmoothanimation(obj,time,posx,posy,posz,count, oldPosition);
+               
 		var _self = this;
 		setTimeout(function() {
 			clearTimeout(_self.timeout);
 			obj._interacting = false;
 		}, time * count);
 	},
-	movesmoothanimation : function(obj,time,posx,posy,posz,count){
+	movesmoothanimation : function(obj,time,posx,posy,posz,count, oldPosition){
 		if (count <=0) 
 			return;
 		var _self = this;
+                var oldPosition = oldPosition || {};
+                var oldX = oldPosition.x || 0;
+                var oldY = oldPosition.y || 0;
 		_self.animation(obj, time/2, 'ease-out', 50, 50, 1, 1, 1, 0, 0, 0, posx, posy, posz);
 		setTimeout(function(){
-				_self.animation(obj, time/2, 'ease-out', 50, 50, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+				_self.animation(obj, time/2, 'ease-out', 50, 50, 1, 1, 1, 0, 0, 0, oldX, oldY, 0);
 					this.timeout = setTimeout(function() {
 					_self.movesmoothanimation(obj,time,posx,posy,posz,count-1);
 					}, parseInt(time/2));
@@ -1634,24 +1643,24 @@ OpacityObjectAnimationHelper = AbstractAnimationHelper.extend({
 		var time = this.config.time != undefined ? this.config.time:1000;
 		var opacity = this.config.opacity != undefined ? this.config.opacity :0;
 		if(time==0) {
-			obj.setStyle('display','block');
-			obj.setStyle('opacity', opacity);
+			obj.css('display','block');
+			obj.css('opacity', opacity);
 			obj._interacting = false;
 			if(opacity == 0){
 				setTimeout(function(){
-					obj.setStyle('display','none');
+					obj.css('display','none');
 				},1);
 			}
 		}
 		else {
-			obj.setStyle('display','block');
-			obj.setStyle('-webkit-transition','opacity '+time+'ms linear');
-			obj.getStyle('top');
-			obj.setStyle('opacity', opacity);
+			obj.css('display','block');
+			obj.css('-webkit-transition','opacity '+time+'ms linear');
+			obj.css('top');
+			obj.css('opacity', opacity);
 			obj._interacting = false;
 			if(opacity == 0){
 				setTimeout(function(){
-					obj.setStyle('display','none');
+					obj.css('display','none');
 				},time-10);
 			}
 			
@@ -1862,6 +1871,7 @@ FlyThenRotateAnimationHelper = AbstractAnimationHelper.extend({
 	}
 });
 
+
 /*
  * Please have a look at the top of this file , the AnimationTypesHelper
  * this object inlcude all animation/config for animation at the moment 
@@ -1870,7 +1880,12 @@ FlyThenRotateAnimationHelper = AbstractAnimationHelper.extend({
  * 
  */
 AnimationHelper = {};
-AnimationHelper.animate = function(type, actionName, arg, obj) {
+AnimationHelper.animate = function(animationData) {
+        var type = animationData.type;
+        var actionName = animationData.actionName;
+        var arg = animationData.arg;
+        var obj = animationData.obj;
+        
         switch (type) {
                 case "singleAnimations" :
                         AnimationUtils.runUtilsAnimation(actionName, arg, obj);

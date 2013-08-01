@@ -1,0 +1,132 @@
+
+/* 
+    Document   : joo-framework
+    Created on : Jul 19, 2013, 10:22:30 AM
+    Author     : anhnt
+*/
+
+.joo-page{
+    position: absolute;
+    width: 100%;
+    height: 100%;    
+}
+
+.joo-stage{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.joo-wrapper-loading{
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(177, 149, 198); 
+    position: absolute; 
+    z-index: 666999; 
+    top: 0px; 
+    left: 0px;
+}
+.joo-wave-loading {
+    top: auto !important;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -14px;
+    left: 0px;
+    background: url(images/wave.png) repeat-x;
+    width: 100%;
+    height: 20px;
+    opacity: 1;
+    background-size: 40% 90%;
+}
+.joo-loading-mask{
+    background: rgb(177, 149, 198);
+    height: 223px;
+    width: 100%;
+    position: absolute !important;
+    min-width: auto !important;
+    top: 23% !important;
+    margin: 0 auto !important;
+    z-index: 9999;
+    max-height: 223px;
+}
+.joo-loading-bar{
+    background-image: url(http://nudieme.nudie.com.au/noncompetition/img/img-04.png);
+    height: 255px !important;
+    width: 237px;
+    position: relative !important;
+    min-width: auto !important;
+    top: 23% !important;
+    margin: 0 auto !important;
+}
+.joo-loading-percentage {
+    top: 68% !important;
+    height: 40px;
+    width: 100px;
+    position: absolute;
+    font-size: 3em;
+    left: 50% !important;
+    text-align: center;
+    margin-left: -50px;
+    color: white;
+}
+/* 
+    Document   : main
+    Created on : Jul 19, 2013, 10:26:57 AM
+    Author     : Admin
+*/
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#Application-Main{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+*{
+    
+}
+#loading-state{
+    background: rgb(177, 149, 198);
+}
+#landing-state{
+    background: transparent;
+}
+#gaming-state{
+    background: appworkspace;
+}
+.wrapper-landing-state{
+    width: 272px;
+    position: relative;
+}
+.joo-gem{
+    width: 50px;
+    height:50px;
+    display: block;
+    position: absolute;        
+    border: 2px solid gray;
+    cursor: pointer;
+/*    -webkit-user-select: none;*/
+    -webkit-user-drag: none;
+}
+.joo-gem:hover{
+    /*opacity:0.8;
+    border: 2px solid white;    */
+}
+
+.joo-gem-select{
+    border: 4px solid yellow;
+}
