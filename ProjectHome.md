@@ -1,0 +1,1 @@
+A mini javascript framework for game
